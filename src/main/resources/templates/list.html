@@ -15,6 +15,7 @@
 <ul th:if="${toons != null}">
     <li th:each="t : ${toons}">
         <a th:href="@{/detail/{toonId}(toonId=${t.getId()})}"> <span th:text="${t.getName()}"></span></a>
+
     </li>
 </ul>
 <ul th:if="${toons == null}">

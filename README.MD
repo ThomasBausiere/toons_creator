@@ -6,7 +6,7 @@
 ## 🛠️ En cours de développement
 
 - **Mise à jour d’un toon**
-    - Service : `updateToon`
+    - Service : `deleteToon`
     - Controller : gestion du `PUT`
 
 ---
@@ -17,6 +17,7 @@
 
 - **Service**
     - Création d’un toon (`createToon`)
+    - Mise à jour d'un toon(`UpdateToon`)
     - Lecture d’un toon par ID (`getToonById`)
     - Lecture de tous les toons (`getAllToons`)
 
@@ -47,8 +48,3 @@
     - Ajout d’un fichier CSS pour le design des templates
 
 ---
-
-## 🚀 Lancement de l'application
-
-```bash
-./mvnw spring-boot:run

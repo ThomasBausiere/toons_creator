@@ -64,15 +64,32 @@ public class ToonController {
         return "redirect:/list";
     }
 
-    @GetMapping("/update")
-    public String updateToon(Model model, UUID id){
-        model.addAttribute("toon", toonService.getToonById(id));
-        return "toon";
-    }
+
 
     //Update
+    //navigation vers page toUpdate
+    @GetMapping("/update/{toonId}")
+    public String updateToon(Model model,  @PathVariable("toonId") UUID toonId){
+        model.addAttribute("toon", toonService.getToonById(toonId));
+        return "toon";
+    }
+    //mise à jour du toon
+    @PutMapping("/add")
+    public String submiteChange(@ModelAttribute("toon") Toon toon){
+        toonService.updateToon(
+                toon.getId(),
+                toon.getCampaign(),
+                toon.getProfession(),
+                toon.getName(),
+                toon.getLevel()
+                );
+        return "redirect:/list";
+
+    }
 
     //Delete
+
+
 
 
 

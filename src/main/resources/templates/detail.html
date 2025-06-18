@@ -18,6 +18,7 @@
         <p>Toon campaign : <span th:text="${toon.getCampaign()}"></span></p>
         <p>Toon Profession : <span th:text="${toon.getProfession()}"></span></p>
         <p>Toon level : <span th:text="${toon.getLevel()}"></span></p>
+        <a th:href="@{/update/{toonId}(toonId=${toon.getId()})}"> update </a>
     </div>
 
 </body>

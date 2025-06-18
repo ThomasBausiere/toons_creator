@@ -72,6 +72,12 @@ public class ToonService {
         return toons.put(toonToUpdate.getId(), toonToUpdate);
     }
 
+    public boolean deleteToonById(UUID id){
+        Toon toonToDelete= getToonById(id);
+        toons.remove(toonToDelete);
+        return true;
+    }
+
 
 
 }
