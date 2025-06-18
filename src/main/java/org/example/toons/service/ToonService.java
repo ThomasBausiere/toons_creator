@@ -84,7 +84,7 @@ public class ToonService {
         toonToUpdate.setLevel(level);
         toonToUpdate.setProfession(profession);
 
-        return toons.put(toonToUpdate.getId(), toonToUpdate);
+        return toonToUpdate;
     }
 
     public boolean deleteToonById(UUID id){

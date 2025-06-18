@@ -13,9 +13,10 @@
 
 
 
-    <form class="toon-form"method="post" th:action="@{/add}" th:object="${toon}">
+    <form class="toon-form" method="post" th:action="@{/add}" th:object="${toon}">
         <h2 class="center-title">Create a toon</h2>
         <input th:if="${toon.getId() != null}" th:field="*{id}" type="hidden">
+        <input type="hidden" th:if="${toon.id != null}" th:field="*{id}" />
 
         <div class="content">
             <label for="name"></label>

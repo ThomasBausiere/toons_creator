@@ -5,7 +5,7 @@
 ---
 ## 🛠️ En cours de développement
 
-- ** **
+- ** Fix Update**
 
 
 ---
@@ -42,9 +42,9 @@
 ### 🎨 Frontend (Thymeleaf Templates)
 
 - `homepage.html` — Page d'accueil
-- `listpage.html` — Liste des toons
-- `detailpage.html` — Détail d’un toon
-- `toonpage.html` — Page de création d’un toon
+- `list.html` — Liste des toons
+- `detail.html` — Détail d’un toon
+- `toon.html` — Page de création d’un toon et de modification
 
 ---
 
@@ -52,8 +52,7 @@
 
 ## 📝 À faire
 
-- **Fonction recherche**
- 
+
 
 - **Style**
     - Ajout d’un fichier CSS pour le design des templates
