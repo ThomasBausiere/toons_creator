@@ -3,23 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Detail of Toon</title>
+    <span th:replace="~{homepage :: css}"></span>
 </head>
 <body>
-    <nav>
-        <a th:href="@{/}">Home</a>
-        <a th:href="@{/list}">List</a>
-        <a th:href="@{/create}">create</a>
-    </nav>
+<span th:replace="~{homepage :: nav}"></span>
+<div class="center-container">
+    <h2 class="center-title">Detail of Toon</h2>
+    <div class="content">
+        <div class="form">
+            <p>Toon Id: <span th:text="${toon.getId()}"></span></p>
+            <p>Toon Name : <span th:text="${toon.getName()}"></span></p>
+            <p>Toon campaign : <span th:text="${toon.getCampaign()}"></span></p>
+            <p>Toon Profession : <span th:text="${toon.getProfession()}"></span></p>
+            <p>Toon level : <span th:text="${toon.getLevel()}"></span></p>
 
-    <h1>Detail of Toon</h1>
-    <div class="detail">
-        <p>Toon Id: <span th:text="${toon.getId()}"></span></p>
-        <p>Toon Name : <span th:text="${toon.getName()}"></span></p>
-        <p>Toon campaign : <span th:text="${toon.getCampaign()}"></span></p>
-        <p>Toon Profession : <span th:text="${toon.getProfession()}"></span></p>
-        <p>Toon level : <span th:text="${toon.getLevel()}"></span></p>
+        </div>
         <a th:href="@{/update/{toonId}(toonId=${toon.getId()})}"> update </a>
+        <a th:href="@{/delete/{toonId}(toonId=${toon.getId()})}"> delete </a>
     </div>
+
+    <div th:object="${toon}">
+    <p>Toon Id: <span th:text="*{id}"></span></p>
+    <p>Toon Name : <span th:text="*{name}"></span></p>
+    <p>Toon campaign : <span th:text="*{campaign}"></span></p>
+    <p>Toon Profession : <span th:text="*{profession}"></span></p>
+    <p>Toon level : <span th:text="*{level}"></span></p>
+
+</div>
+</div>
+
 
 </body>
 </html>

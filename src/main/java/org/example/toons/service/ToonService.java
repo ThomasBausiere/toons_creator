@@ -4,10 +4,7 @@ package org.example.toons.service;
 import org.example.toons.model.Toon;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class ToonService {
@@ -43,6 +40,8 @@ public class ToonService {
 
     }
 
+
+
     public List<Toon> getAllToon(){
         return toons.values().stream().toList();
     }
@@ -73,10 +72,16 @@ public class ToonService {
     }
 
     public boolean deleteToonById(UUID id){
-        Toon toonToDelete= getToonById(id);
-        toons.remove(toonToDelete);
+        toons.remove(id);
         return true;
     }
+
+//    public List<Toon> searchToon(String search){
+//        List<Toon> toonList = new ArrayList<>();
+//        for(Toon t: toons){
+//            if(t.)
+//        }
+//    }
 
 
 

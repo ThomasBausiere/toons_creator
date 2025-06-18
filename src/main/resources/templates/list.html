@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>List of toons</title>
+    <span th:replace="~{homepage :: css}"></span>
 </head>
 <body>
-<nav>
-    <a th:href="@{/}">Home</a>
-    <a th:href="@{/list}">List</a>
-    <a th:href="@{/create}">create</a>
-</nav>
+<span th:replace="~{homepage :: nav}"></span>
 
-<h1>List of toons</h1>
-<ul th:if="${toons != null}">
-    <li th:each="t : ${toons}">
-        <a th:href="@{/detail/{toonId}(toonId=${t.getId()})}"> <span th:text="${t.getName()}"></span></a>
+<div class="center-container">
+    <h2 class="center-title">List of toons</h2>
+    <ul th:if="${toons != null}">
+        <li th:each="t : ${toons}">
+            <a class="content" th:href="@{/detail/{toonId}(toonId=${t.getId()})}"> <span th:text="${t.getName()}"></span></a>
+        </li>
+    </ul>
+    <ul th:if="${toons == null}">
+        <p>Aucun toon de créé.</p>
+    </ul>
+</div>
 
-    </li>
-</ul>
-<ul th:if="${toons == null}">
-    <p>Aucun toon de créé.</p>
-</ul>
 </body>
 </html>

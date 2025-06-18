@@ -3,36 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Create a Toon</title>
+    <span th:replace="~{homepage :: css}"></span>
+
 </head>
 <body>
-<nav>
-    <a th:href="@{/}">Home</a>
-    <a th:href="@{/list}">List</a>
-    <a th:href="@{/create}">create</a>
-</nav>
+<span th:replace="~{homepage :: nav}"></span>
 
-    <h1>Create a toon</h1>
 
+
+<div class="center-container">
+    <h2 class="center-title">Create a toon</h2>
     <form method="post" th:action="@{/add}" th:object="${toon}">
         <input th:if="${toon.getId() != null}" th:field="*{id}" type="hidden">
 
-        <div>
+        <div class="content">
             <label for="name">Toon's name:</label>
             <input type="text" th:field="*{name}" id="name"/>
         </div>
-        <div>
+        <div class="content">
             <label for="level">Toon's level :</label>
             <input type="number" th:field="*{level}" id="level"/>
         </div>
-        <div>
+        <div class="content">
             <label for="campaign">Toon's campaign :</label>
             <input type="text" th:field="*{campaign}" id="campaign"/>
         </div>
-        <div>
+        <div class="content">
             <label for="profession">Toon's profession :</label>
             <input type="text" th:field="*{profession}" id="profession"/>
         </div>
         <button>Envoyer</button>
     </form>
+</div>
+
 </body>
 </html>

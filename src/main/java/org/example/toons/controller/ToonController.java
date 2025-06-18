@@ -89,7 +89,11 @@ public class ToonController {
 
     //Delete
 
-
+    @GetMapping("/delete/{toonId}")
+    public String deleteToon(@PathVariable("toonId") UUID toonId){
+        toonService.deleteToonById(toonId);
+        return "redirect:/list";
+    }
 
 
 
