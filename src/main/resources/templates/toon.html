@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a Toon</title>
+</head>
+<body>
+<nav>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/list}">List</a>
+    <a th:href="@{/create}">create</a>
+</nav>
+
+    <h1>Create a toon</h1>
+
+    <form method="post" th:action="@{/add}" th:object="${toon}">
+        <input th:field="*{id}" type="hidden" />
+        <div>
+            <label for="name">Toon's name:</label>
+            <input type="text" th:field="*{name}" id="name"/>
+        </div>
+        <div>
+            <label for="level">Toon's level :</label>
+            <input type="number" th:field="*{level}" id="level"/>
+        </div>
+        <div>
+            <label for="campaign">Toon's campaign :</label>
+            <input type="text" th:field="*{campaign}" id="campaign"/>
+        </div>
+        <div>
+            <label for="profession">Toon's profession :</label>
+            <input type="text" th:field="*{profession}" id="profession"/>
+        </div>
+        <button>Envoyer</button>
+    </form>
+</body>
+</html>

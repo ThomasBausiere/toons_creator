@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Detail of Toon</title>
+</head>
+<body>
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/list}">List</a>
+        <a th:href="@{/create}">create</a>
+    </nav>
+
+    <h1>Detail of Toon</h1>
+    <div class="detail">
+        <p>Toon Id: <span th:text="${toon.getId()}"></span></p>
+        <p>Toon Name : <span th:text="${toon.getName()}"></span></p>
+        <p>Toon campaign : <span th:text="${toon.getCampaign()}"></span></p>
+        <p>Toon Profession : <span th:text="${toon.getProfession()}"></span></p>
+        <p>Toon level : <span th:text="${toon.getLevel()}"></span></p>
+    </div>
+
+</body>
+</html>

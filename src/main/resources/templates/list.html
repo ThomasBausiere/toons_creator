@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of toons</title>
+</head>
+<body>
+<nav>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/list}">List</a>
+    <a th:href="@{/create}">create</a>
+</nav>
+
+<h1>List of toons</h1>
+<ul th:if="${toons != null}">
+    <li th:each="t : ${toons}">
+        <a th:href="@{/detail/{toonId}(toonId=${t.getId()})}"> <span th:text="${t.getName()}"></span></a>
+    </li>
+</ul>
+<ul th:if="${toons == null}">
+    <p>Aucun toon de créé.</p>
+</ul>
+</body>
+</html>
