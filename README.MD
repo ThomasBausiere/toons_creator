@@ -5,9 +5,16 @@
 ---
 ## 🛠️ En cours de développement
 
-- **Mise à jour d’un toon**
-    - Service : `deleteToon`
-    - Controller : gestion du `PUT`
+- ** **
+
+
+---
+
+---
+## 🛠️ développement récent
+
+- ** fonction Search **
+
 
 ---
 
@@ -20,12 +27,17 @@
     - Mise à jour d'un toon(`UpdateToon`)
     - Lecture d’un toon par ID (`getToonById`)
     - Lecture de tous les toons (`getAllToons`)
+    - delete toon :(`deleteToon`)
+    - search
 
 - **Controller**
     - Navigation principale
     - Création d’un toon via méthode POST
     - Lecture d’un toon par ID
     - Lecture de tous les toons
+    - deleteToon
+    - update
+    - search
 
 ### 🎨 Frontend (Thymeleaf Templates)
 
@@ -40,9 +52,8 @@
 
 ## 📝 À faire
 
-- **Suppression d’un toon**
-    - Service : `deleteToon`
-    - Controller : gestion du `DELETE`
+- **Fonction recherche**
+ 
 
 - **Style**
     - Ajout d’un fichier CSS pour le design des templates

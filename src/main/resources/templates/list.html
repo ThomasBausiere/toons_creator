@@ -8,17 +8,27 @@
 <body>
 <span th:replace="~{homepage :: nav}"></span>
 
-<div class="center-container">
-    <h2 class="center-title">List of toons</h2>
-    <ul th:if="${toons != null}">
-        <li th:each="t : ${toons}">
-            <a class="content" th:href="@{/detail/{toonId}(toonId=${t.getId()})}"> <span th:text="${t.getName()}"></span></a>
-        </li>
-    </ul>
-    <ul th:if="${toons == null}">
-        <p>Aucun toon de créé.</p>
-    </ul>
-</div>
+<table th:unless="${toons.isEmpty()}">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>profession</th>
+        <th>level</th>
+        <th>details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="t :${toons}">
+        <td th:text="${t.id}"></td>
+        <td th:text="${t.name}"></td>
+        <td th:text="${t.profession}"></td>
+        <td th:text="${t.level}"></td>
+        <td> <a th:href="@{/detail/{id}(id=${t.getId()})}">details</a></td>
+    </tr>
+    </tbody>
+</table>
+
 
 </body>
 </html>

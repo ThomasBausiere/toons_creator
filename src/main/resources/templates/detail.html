@@ -7,29 +7,19 @@
 </head>
 <body>
 <span th:replace="~{homepage :: nav}"></span>
-<div class="center-container">
+<div class="content-container">
     <h2 class="center-title">Detail of Toon</h2>
     <div class="content">
-        <div class="form">
-            <p>Toon Id: <span th:text="${toon.getId()}"></span></p>
-            <p>Toon Name : <span th:text="${toon.getName()}"></span></p>
-            <p>Toon campaign : <span th:text="${toon.getCampaign()}"></span></p>
-            <p>Toon Profession : <span th:text="${toon.getProfession()}"></span></p>
-            <p>Toon level : <span th:text="${toon.getLevel()}"></span></p>
-
+        <div class="form" th:object="${toon}">
+            <p>Toon Id: <span th:text="*{id}"></span></p>
+            <p>Toon Name: <span th:text="*{name}"></span></p>
+            <p>Toon campaign: <span th:text="*{campaign}"></span></p>
+            <p>Toon Profession: <span th:text="*{profession}"></span></p>
+            <p>Toon level: <span th:text="*{level}"></span></p>
         </div>
-        <a th:href="@{/update/{toonId}(toonId=${toon.getId()})}"> update </a>
-        <a th:href="@{/delete/{toonId}(toonId=${toon.getId()})}"> delete </a>
+        <a class="btn-detail" th:href="@{/update/{toonId}(toonId=${toon.getId()})}">Update</a>
+        <a class="btn-detail" th:href="@{/delete/{toonId}(toonId=${toon.getId()})}">Delete</a>
     </div>
-
-    <div th:object="${toon}">
-    <p>Toon Id: <span th:text="*{id}"></span></p>
-    <p>Toon Name : <span th:text="*{name}"></span></p>
-    <p>Toon campaign : <span th:text="*{campaign}"></span></p>
-    <p>Toon Profession : <span th:text="*{profession}"></span></p>
-    <p>Toon level : <span th:text="*{level}"></span></p>
-
-</div>
 </div>
 
 

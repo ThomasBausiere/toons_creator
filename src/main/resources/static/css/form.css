@@ -1,68 +1,55 @@
-body{
-    height:100vh;
-    width:100%;
-}
-
 .center-title{
     color: var(--high-contast-text);
     text-align: center;
     margin-bottom: 1rem;
 }
-
-.center-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: var(--main-bg-color);
-}
-
 .content {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
 }
 
-form {
-    background-color:var(--sub-bg-color);
-    padding: 2rem;
-    padding-top:1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-label,  a {
-    color: var(--high-contast-text);
-}
-input{
-    border: 1px solid var(--default-animed-ui-border-color);
-    background-color: var(--hover-solid-color);
-
-}
-
-input[type="submit"] {
-    background-color: var(--main-solid-color);
-    color: var(--low-contrast-text)1;
+.toon-form {
+    background: rgba(255, 255, 255, 0.15);
     padding: 10px 20px;
-    border: 1px solid var(--default-animed-ui-border-color);
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 12px;
+    margin: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-input[type="submit"]:hover {
-    background-color: var(--hover-solid-color);
-    color:   var(--high-contrast-text);
-    border: 1px solid var(--hover-animed-ui-border-color);
+.toon-form input{
+    position: relative;
+    width:100%;
+    height: 100%;
+    background: transparent;
+    outline:none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    padding:20px 45px 20px 20px;
 }
 
-.error-message {
-    color: var(--error-color);
-    text-align: center;
-    margin-top: 10px;
-    font-weight: bold;
+.toon-form *, .toon-form input::placeholder{
+    color: black;
+}
+.toon-form input:hover::placeholder,.toon-form input:hover, .btn:hover{
+    color: #fff;
+
 }
 
-a.route{
-    cursor: pointer;
+
+.btn{
+    width:100%;
+    height:45px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0, 0, .2);
+    cursor:pointer;
+    font-size:16px;
+    color:black;
+    font-weight: 600;
 }
+
+

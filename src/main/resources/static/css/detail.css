@@ -1,7 +1,60 @@
-.form {
-    background-color:var(--sub-bg-color);
-    padding: 2rem;
-    padding-top:1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+.content-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    color: #000;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.center-title {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.content .form p {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+    font-size: 16px;
+}
+.content .form span {
+    font-weight: bold;
+    color: #222;
+}
+
+.content span {
+    font-weight: bold;
+    color: #222;
+}
+
+
+
+.btn-detail {
+    display: inline-block;
+    min-width: 120px;
+    height: 45px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 16px;
+    color: black;
+    font-weight: 600;
+    text-align: center;
+    line-height: 45px;
+    text-decoration: none;
+    margin: 10px 8px 0 0;
+    transition: all 0.3s ease;
+}
+
+.btn-detail:hover {
+    color: #fff;
 }

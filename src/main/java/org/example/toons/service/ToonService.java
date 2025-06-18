@@ -14,29 +14,45 @@ public class ToonService {
         toons = new HashMap<>();
         Toon toon1= Toon.builder()
                 .id(UUID.randomUUID())
-                .name("Toon1")
-                .campaign("Campaign 1")
+                .name("Warrior Firwan")
+                .campaign("Prophecie")
                 .profession("Warrior")
                 .level(20)
                 .build();
         Toon toon2= Toon.builder()
                 .id(UUID.randomUUID())
-                .name("Toon2")
-                .campaign("Campaign 1")
-                .profession("Monk")
+                .name("Rysa Wys")
+                .campaign("Faction")
+                .profession("Assassin")
                 .level(20)
                 .build();
         Toon toon3= Toon.builder()
                 .id(UUID.randomUUID())
-                .name("Toon3")
-                .campaign("Campaign 2")
-                .profession("Mesmer")
-                .level(12)
+                .name("Demonix Firwan")
+                .campaign("Prophecie")
+                .profession("Necromancer")
+                .level(20)
+                .build();
+        Toon toon4= Toon.builder()
+                .id(UUID.randomUUID())
+                .name("Adrobora Firwan")
+                .campaign("Nightfall")
+                .profession("Paragon")
+                .level(20)
+                .build();
+        Toon toon5= Toon.builder()
+                .id(UUID.randomUUID())
+                .name("Jack Daniel Rt")
+                .campaign("Faction")
+                .profession("Ritualist")
+                .level(20)
                 .build();
 
         toons.put(toon1.getId(), toon1);
         toons.put(toon2.getId(), toon2);
         toons.put(toon3.getId(), toon3);
+        toons.put(toon4.getId(), toon4);
+        toons.put(toon5.getId(), toon5);
 
     }
 
@@ -76,12 +92,17 @@ public class ToonService {
         return true;
     }
 
-//    public List<Toon> searchToon(String search){
-//        List<Toon> toonList = new ArrayList<>();
-//        for(Toon t: toons){
-//            if(t.)
-//        }
-//    }
+    public List<Toon> searchToons(String search) {
+        List<Toon> toonList = new ArrayList<>();
+            toons.values().stream().forEach(toon -> {
+                if(toon.getName().contains(search) || toon.getCampaign().contains(search) || toon.getProfession().contains(search)) {
+                    toonList.add(toon);
+                }
+            });
+        return toonList;
+    }
+
+
 
 
 

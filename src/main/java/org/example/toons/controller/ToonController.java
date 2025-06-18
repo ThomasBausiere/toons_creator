@@ -42,7 +42,15 @@ public class ToonController {
 
     //Récupérer par formulaire
 
-
+    @GetMapping("/toons") //
+    public String showToons(@RequestParam(name = "search",required = false) String search, Model model){
+        if(search == null){
+            model.addAttribute("toons",toonService.getAllToon());
+        }else {
+            model.addAttribute("toons",toonService.searchToons(search));
+        }
+        return "list";
+    }
 
 
     //Create

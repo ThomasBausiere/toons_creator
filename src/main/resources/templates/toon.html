@@ -11,30 +11,31 @@
 
 
 
-<div class="center-container">
-    <h2 class="center-title">Create a toon</h2>
-    <form method="post" th:action="@{/add}" th:object="${toon}">
+
+
+    <form class="toon-form"method="post" th:action="@{/add}" th:object="${toon}">
+        <h2 class="center-title">Create a toon</h2>
         <input th:if="${toon.getId() != null}" th:field="*{id}" type="hidden">
 
         <div class="content">
-            <label for="name">Toon's name:</label>
-            <input type="text" th:field="*{name}" id="name"/>
+            <label for="name"></label>
+            <input type="text" th:field="*{name}" id="name" placeholder="Name"/>
         </div>
         <div class="content">
-            <label for="level">Toon's level :</label>
-            <input type="number" th:field="*{level}" id="level"/>
+            <label for="level"></label>
+            <input type="number" th:field="*{level}" id="level" placeholder="Level"/>
         </div>
         <div class="content">
-            <label for="campaign">Toon's campaign :</label>
-            <input type="text" th:field="*{campaign}" id="campaign"/>
+            <label for="campaign"></label>
+            <input type="text" th:field="*{campaign}" id="campaign" placeholder="Campaign"/>
         </div>
         <div class="content">
-            <label for="profession">Toon's profession :</label>
-            <input type="text" th:field="*{profession}" id="profession"/>
+            <label for="profession"></label>
+            <input type="text" th:field="*{profession}" id="profession" placeholder="Profession"/>
         </div>
-        <button>Envoyer</button>
+        <button class="btn">Envoyer</button>
     </form>
-</div>
+
 
 </body>
 </html>

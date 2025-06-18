@@ -9,12 +9,26 @@
 </head>
 <body>
  <th:block th:fragment="nav">
-     <nav>
-        <a th:href="@{/}">Home</a>
-        <a th:href="@{/list}">List</a>
-        <a th:href="@{/create}">create</a>
+     <nav class="navbar">
+         <div class="navbar-container">
+             <div class="logo">
+                 <img th:src="@{/image/stc.ico}" alt="icon">
+             </div>
+             <div class="nav-links">
+                 <a th:href="@{/}">Home</a>
+                 <a th:href="@{/list}">List</a>
+                 <a th:href="@{/create}">create</a>
+             </div>
+             <div class="nav-actions">
+                 <form class="search-form" method="get" th:action="@{/toons}">
+                     <input th:name="search" placeholder="Search"/>
+
+                 </form>
+             </div>
+         </div>
     </nav>
  </th:block>
+
     <h1>Homepage</h1>
 
 </body>
