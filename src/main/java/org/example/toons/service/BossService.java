@@ -46,4 +46,15 @@ public class BossService {
         }
         return result;
     }
+
+    public Boss getBossById(UUID id) {
+        return bosses.get(id); // Map<UUID, Boss>
+    }
+
+    public Boss getBossByName(String name) {
+        return bosses.values().stream()
+                .filter(boss -> boss.getName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
+    }
 }

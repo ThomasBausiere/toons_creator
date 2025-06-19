@@ -18,6 +18,7 @@ public class EliteSkill {
 
     @NotNull(message="Ce champ ne peut pas être vide.")
     private String name;
+    @NotNull(message="Ce champ ne peut pas être vide.")
     private String description;
     private List<Boss> bossList;
 
