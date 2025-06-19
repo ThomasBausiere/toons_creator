@@ -59,7 +59,7 @@ public class ToonController {
     @PostMapping("/add")
     public String submitToon(@Validated @ModelAttribute("toon") Toon toon, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            System.out.println("erreur lors du create");
+            System.out.println("erreur lors de la creation d'un toon");
             return "toon";
         }else{
             toonService.newToon(
