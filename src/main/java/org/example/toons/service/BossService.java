@@ -1,11 +1,13 @@
 package org.example.toons.service;
 
 import org.example.toons.model.Boss;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+@Service
 public class BossService {
 
     private Map<UUID, Boss> bosses;

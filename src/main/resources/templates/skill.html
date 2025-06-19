@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create or Update a Skill</title>
+    <span th:replace="~{homepage :: css}"></span>
 </head>
 <body>
+<span th:replace="~{homepage :: nav}"></span>
+
+<form method="post" th:action="@{/add-skill}" th:object="${eliteSkill}">
+    <h2 class="center-title" th:text="${eliteSkill?.id != null or skill?.id != null ? 'Update a Skill' : 'Create a Skill'}"></h2>
+
+    <input type="hidden" th:if="${eliteSkill?.id != null or skill?.id != null}" th:field="*{id}" />
+
+    <div class="content">
+        <label for="name">Name</label>
+        <input type="text" th:field="*{name}" id="name" placeholder="Skill Name"/>
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    </div>
+
+    <div class="content">
+        <label for="description">Description</label>
+        <input type="text" th:field="*{description}" id="description" placeholder="Skill Description"/>
+        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+    </div>
+
+
+    <button class="btn">Envoyer</button>
+</form>
 
 </body>
 </html>

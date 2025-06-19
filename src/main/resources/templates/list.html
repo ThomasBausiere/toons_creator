@@ -1,34 +1,34 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>List of toons</title>
-    <span th:replace="~{homepage :: css}"></span>
-</head>
-<body>
-<span th:replace="~{homepage :: nav}"></span>
+    <!DOCTYPE html>
+    <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>List of toons</title>
+        <span th:replace="~{homepage :: css}"></span>
+    </head>
+    <body>
+    <span th:replace="~{homepage :: nav}"></span>
 
-<table th:unless="${toons.isEmpty()}">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Profession</th>
-        <th>Campaign</th>
-        <th>Level</th>
-        <th>Details</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="t :${toons}">
-        <td th:text="${t.name}"></td>
-        <td th:text="${t.profession}"></td>
-        <td th:text="${t.campaign}"></td>
-        <td th:text="${t.level}"></td>
-        <td> <a th:href="@{/detail/{id}(id=${t.getId()})}">details</a></td>
-    </tr>
-    </tbody>
-</table>
+    <table th:unless="${toons.isEmpty()}">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Profession</th>
+            <th>Campaign</th>
+            <th>Level</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="t :${toons}">
+            <td th:text="${t.name}"></td>
+            <td th:text="${t.profession}"></td>
+            <td th:text="${t.campaign}"></td>
+            <td th:text="${t.level}"></td>
+            <td> <a th:href="@{/detail/{id}(id=${t.getId()})}">details</a></td>
+        </tr>
+        </tbody>
+    </table>
 
 
-</body>
-</html>
+    </body>
+    </html>

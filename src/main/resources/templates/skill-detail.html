@@ -5,6 +5,46 @@
     <title>Title</title>
 </head>
 <body>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail of Elite Skill</title>
+    <span th:replace="~{homepage :: css}"></span>
+</head>
+<body>
+<span th:replace="~{homepage :: nav}"></span>
+
+<div class="content-container">
+    <h2 class="center-title">Detail of Elite Skill</h2>
+
+    <div class="content">
+        <div class="form" th:object="${skill}">
+            <p>Skill Id: <span th:text="*{id}"></span></p>
+            <p>Skill Name: <span th:text="*{name}"></span></p>
+            <p>Description: <span th:text="*{description}"></span></p>
+
+            <div>
+                <p><strong>Bosses:</strong></p>
+                <ul>
+                    <li th:each="boss : *{bossList}">
+                        <span th:text="${boss.name} + ' – ' + ${boss.pos}"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="button-row">
+            <a class="btn-detail" th:href="@{/skill-update/{id}(id=${skill.id})}">Update</a>
+            <a class="btn-detail" th:href="@{/skill-delete/{id}(id=${skill.id})}">Delete</a>
+            <a class="btn-detail" th:href="@{/skill/{id}/add-boss(id=${skill.id})}">Add Boss</a>
+            <a class="btn-detail" th:href="@{/skill/{id}/remove-boss(id=${skill.id})}">Remove Boss</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
 
 </body>
 </html>

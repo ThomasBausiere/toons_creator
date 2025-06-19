@@ -2,9 +2,12 @@ package org.example.toons.service;
 
 import org.example.toons.model.Boss;
 import org.example.toons.model.EliteSkill;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+
+@Service
 public class EliteSkillService {
     private final Map<UUID, EliteSkill> eliteSkills;
     private final BossService bossService = new BossService();

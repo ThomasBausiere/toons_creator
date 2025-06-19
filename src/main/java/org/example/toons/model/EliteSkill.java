@@ -1,6 +1,7 @@
 package org.example.toons.model;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,9 +17,11 @@ import java.util.UUID;
 public class EliteSkill {
     private UUID id;
 
-    @NotNull(message="Ce champ ne peut pas être vide.")
+
+    @Size(min = 1, message = "Ne doit pas être vide")
     private String name;
-    @NotNull(message="Ce champ ne peut pas être vide.")
+
+    @Size(min = 1, message = "Ne doit pas être vide")
     private String description;
     private List<Boss> bossList;
 

@@ -7,16 +7,29 @@
 </head>
 <body>
 <span th:replace="~{homepage :: nav}"></span>
-<thead>
-<tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Boss</th>
-    <th>Details</th>
-</tr>
-</thead>
-
-
+<table th:unless="${eliteSkills.isEmpty()}">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Linked Bosses</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="skill : ${eliteSkills}">
+        <td th:text="${skill.name}"></td>
+        <td th:text="${skill.description}"></td>
+        <td>
+            <ul>
+                <li th:each="boss : ${skill.bossList}" th:text="${boss.name} + ' – ' + ${boss.pos}"></li>
+            </ul>
+        </td>
+        <td>
+            <a th:href="@{/skill-detail/{id}(id=${skill.id})}">details</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

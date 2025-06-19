@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Bosses to Elite Skill</title>
+  <span th:replace="~{homepage :: css}"></span>
+</head>
+<body>
+<span th:replace="~{homepage :: nav}"></span>
+
+<h2 class="center-title">Add Bosses to Skill</h2>
+
+<form method="post" th:action="@{/skill/{id}/add-boss-confirm(id=${skillId})}">
+  <table>
+    <thead>
+    <tr>
+      <th>Select</th>
+      <th>Boss Name</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="boss : ${availableBosses}">
+      <td><input type="checkbox" name="selectedBosses" th:value="${boss.id}" /></td>
+      <td th:text="${boss.name}"></td>
+      <td th:text="${boss.pos}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <button class="btn">Confirmer</button>
+</form>
+
+</body>
+</html>
