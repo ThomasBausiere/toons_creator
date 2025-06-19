@@ -16,10 +16,11 @@ public class EliteSkillService {
     }
 
     // CREATE
-    public EliteSkill addEliteSkill(String name, List<Boss> bossList) {
+    public EliteSkill addEliteSkill(String name, String description, List<Boss> bossList) {
         EliteSkill newEliteSkill = EliteSkill.builder()
                 .id(UUID.randomUUID())
                 .name(name)
+                .description(description)
                 .bossList(bossList)
                 .build();
         return eliteSkills.put(newEliteSkill.getId(), newEliteSkill);
@@ -32,10 +33,12 @@ public class EliteSkillService {
     public List<EliteSkill> getAllEliteSkills() {return eliteSkills.values().stream().toList();}
 
     // UPDATE
-    public EliteSkill updateEliteSkillName(UUID id, String name, List<Boss> listBoss) {
+    public EliteSkill updateEliteSkillName(UUID id, String name, String description, List<Boss> listBoss) {
         eliteSkills.get(id).setName(name);
-        //TODO      Ajouter un boss dans la List<Boss> à l'aide de son ID
-        //todo          ou supprimer un boss de cette liste
+        eliteSkills.get(id).setDescription(description);
+
+        return eliteSkills.get(id);
+
     }
 
     // DELETE
