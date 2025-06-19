@@ -1,9 +1,12 @@
 package org.example.toons.controller;
 
+import jakarta.validation.Valid;
 import org.example.toons.model.Toon;
 import org.example.toons.service.ToonService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,15 +45,7 @@ public class ToonController {
 
     //Récupérer par formulaire
 
-    @GetMapping("/toons") //
-    public String showToons(@RequestParam(name = "search",required = false) String search, Model model){
-        if(search == null){
-            model.addAttribute("toons",toonService.getAllToon());
-        }else {
-            model.addAttribute("toons",toonService.searchToons(search));
-        }
-        return "list";
-    }
+
 
 
     //Create
@@ -62,14 +57,19 @@ public class ToonController {
     }
 
     @PostMapping("/add")
-    public String submitToon(@ModelAttribute("toon") Toon toon){
-        toonService.newToon(
-                toon.getCampaign(),
-                toon.getProfession(),
-                toon.getName(),
-                toon.getLevel()
-        );
-        return "redirect:/list";
+    public String submitToon(@Validated @ModelAttribute("toon") Toon toon, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            System.out.println("erreur lors du create");
+            return "toon";
+        }else{
+            toonService.newToon(
+                    toon.getCampaign(),
+                    toon.getProfession(),
+                    toon.getName(),
+                    toon.getLevel()
+            );
+            return "redirect:/list";
+        }
     }
 
 
@@ -83,15 +83,20 @@ public class ToonController {
     }
     //mise à jour du toon
     @PutMapping("/add")
-    public String submiteChange(@ModelAttribute("toon") Toon toon){
-        toonService.updateToon(
-                toon.getId(),
-                toon.getCampaign(),
-                toon.getProfession(),
-                toon.getName(),
-                toon.getLevel()
-                );
-        return "redirect:/list";
+    public String submiteChange(@Validated @ModelAttribute("toon") Toon toon, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            System.out.println("erreur lors de l'update");
+            return "redirect:/list";
+        }else {
+            toonService.updateToon(
+                    toon.getId(),
+                    toon.getCampaign(),
+                    toon.getProfession(),
+                    toon.getName(),
+                    toon.getLevel()
+            );
+            return "redirect:/list";
+        }
 
     }
 

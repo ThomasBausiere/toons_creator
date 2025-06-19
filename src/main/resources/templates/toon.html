@@ -14,25 +14,29 @@
 
 
     <form class="toon-form" method="post" th:action="@{/add}" th:object="${toon}">
-        <h2 class="center-title">Create a toon</h2>
+        <h2 class="center-title" th:text="${toon.getId() != null ? 'Update a toon' : 'Create a toon'}"></h2>
         <input th:if="${toon.getId() != null}" th:field="*{id}" type="hidden">
         <input type="hidden" th:if="${toon.id != null}" th:field="*{id}" />
 
         <div class="content">
             <label for="name"></label>
             <input type="text" th:field="*{name}" id="name" placeholder="Name"/>
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
         </div>
         <div class="content">
             <label for="level"></label>
-            <input type="number" th:field="*{level}" id="level" placeholder="Level"/>
+            <input type="text" name="level" id="level" th:value="${toon.getId() != null ? toon.getLevel() : ''}" placeholder="Level"/>
+            <span th:if="${#fields.hasErrors('level')}" th:errors="*{level}"></span>
         </div>
         <div class="content">
             <label for="campaign"></label>
             <input type="text" th:field="*{campaign}" id="campaign" placeholder="Campaign"/>
+            <span th:if="${#fields.hasErrors('campaign')}" th:text=" TEST "></span>
         </div>
         <div class="content">
             <label for="profession"></label>
             <input type="text" th:field="*{profession}" id="profession" placeholder="Profession"/>
+            <span th:if="${#fields.hasErrors('profession')}" th:errors="*{profession}"></span>
         </div>
         <button class="btn">Envoyer</button>
     </form>

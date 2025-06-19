@@ -10,7 +10,7 @@
     margin:0;
 }
 body{
-    background-image:url("../image/bg_01.jpg");
+    background-image:url("../image/bg_02.png");
     background-repeat: no-repeat;
     background-size: cover;
     color:var(--high-contast-text);

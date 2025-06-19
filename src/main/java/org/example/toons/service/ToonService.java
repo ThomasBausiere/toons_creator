@@ -78,13 +78,12 @@ public class ToonService {
     }
 
     public Toon updateToon(UUID id, String campaign, String profession, String name, int level){
-        Toon toonToUpdate = getToonById(id);
-        toonToUpdate.setName(name);
-        toonToUpdate.setCampaign(campaign);
-        toonToUpdate.setLevel(level);
-        toonToUpdate.setProfession(profession);
+        toons.get(id).setName(name);
+        getToonById(id).setCampaign(campaign);
+        getToonById(id).setLevel(level);
+        getToonById(id).setProfession(profession);
 
-        return toonToUpdate;
+        return getToonById(id);
     }
 
     public boolean deleteToonById(UUID id){
