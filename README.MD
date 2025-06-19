@@ -53,9 +53,16 @@
 
 ## 📝 À faire
 
+**EliteSkill**
+-Service : Update -> fonctionnement de l'ajout de boss dans la methode d'update (ajout et suppression de boss par ID)
+-Controller : definir les routes et l'appel des services
+-Views: ensemble du HTML
 
-
-- **Style**
-    - Ajout d’un fichier CSS pour le design des templates
+**Toon**
+Ajout des Elites dans List<Elite>
+MAJ de la liste des compétences du toon
+-service 
+-controller
+-view
 
 ---
