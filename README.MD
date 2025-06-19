@@ -2,10 +2,11 @@
 
 **Toon Creator** est une application Java basée sur Spring permettant de créer, visualiser et gérer des personnages appelés **"toons"**.
 
+
 ---
 ## 🛠️ En cours de développement
 
-- ** Fix Update**
+- **déploiement de la feature EliteSkills. 
 
 
 ---
@@ -13,7 +14,7 @@
 ---
 ## 🛠️ développement récent
 
-- ** fonction Search **
+- ** Fix Update**
 
 
 ---
