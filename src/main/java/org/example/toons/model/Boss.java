@@ -13,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Boss {
-    UUID Id;
+    UUID id;
     @NotNull(message="Ce champ ne peut pas être vide.")
     String name;
 
@@ -26,11 +26,11 @@ public class Boss {
     }
 
     public UUID getId() {
-        return Id;
+        return id;
     }
 
     public void setId(UUID id) {
-        Id = id;
+        id = id;
     }
 
     public String getName() {

@@ -21,14 +21,14 @@
     </thead>
     <tbody>
     <tr th:each="boss : ${availableBosses}">
-      <td><input type="checkbox" name="selectedBosses" th:value="${boss.id}" /></td>
+      <td><input type="checkbox" name="selectedBosses" th:value="${boss.Id}" /></td>
       <td th:text="${boss.name}"></td>
       <td th:text="${boss.pos}"></td>
     </tr>
     </tbody>
   </table>
 
-  <button class="btn">Confirmer</button>
+  <button type="submit" class="btn">Confirmer</button>
 </form>
 
 </body>

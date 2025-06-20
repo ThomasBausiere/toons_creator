@@ -30,7 +30,7 @@ public class BossService {
     private void addBoss(String name, String pos) {
         UUID id = UUID.randomUUID();
         Boss boss = Boss.builder()
-                .Id(id)
+                .id(id)
                 .name(name)
                 .pos(pos)
                 .build();

@@ -105,9 +105,14 @@ public class EliteSkillController {
     @GetMapping("/skill/{id}/add-boss")
     public String showAddBossForm(@PathVariable UUID id, Model model) {
         EliteSkill skill = eliteSkillService.getEliteSkillById(id);
+
+        if (skill == null) {
+            System.err.println(" Aucun EliteSkill trouvé avec l'ID: " + id);
+            return "redirect:/skill-list";
+        }
+
         List<Boss> allBosses = new ArrayList<>(bossService.getBosses().values());
 
-        // filtrer ceux déjà liés
         if (skill.getBossList() != null) {
             allBosses.removeIf(b -> skill.getBossList().stream().anyMatch(eb -> eb.getId().equals(b.getId())));
         }
@@ -122,6 +127,7 @@ public class EliteSkillController {
         if (selectedBosses != null) {
             for (UUID bossId : selectedBosses) {
                 eliteSkillService.addBossToEliteSkillList(id, bossId);
+                System.out.println("Ajout de boss : " + bossId);
             }
         }
         return "redirect:/skill-detail/" + id;

@@ -10,10 +10,11 @@ import java.util.*;
 @Service
 public class EliteSkillService {
     private final Map<UUID, EliteSkill> eliteSkills;
-    private final BossService bossService = new BossService();
+    private final BossService bossService;
 
 
-    public EliteSkillService() {
+    public EliteSkillService(BossService bossService) {
+        this.bossService = bossService;
         this.eliteSkills = new HashMap<>();
         addEliteSkill("Spiteful Spirit", "Curses foes to take damage when attacking.", null);
         addEliteSkill("Savage Shot", "Interrupts a foe's action and causes bleeding.", null);
@@ -54,10 +55,13 @@ public class EliteSkillService {
 
         if (eliteSkill.getBossList() == null) {
             eliteSkill.setBossList(new ArrayList<>());
+            System.out.println("Liste après ajout:");
+            eliteSkill.getBossList().forEach(b -> System.out.println(b.getName()));
         }
 
         // vérification de duoblons
         if (eliteSkill.getBossList().stream().noneMatch(b -> b.getId().equals(bossId))) {
+
             eliteSkill.getBossList().add(boss);
             return true;
         }
