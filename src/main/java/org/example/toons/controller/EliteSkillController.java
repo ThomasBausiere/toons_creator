@@ -1,5 +1,6 @@
 package org.example.toons.controller;
 
+import jakarta.validation.Valid;
 import org.example.toons.model.Boss;
 import org.example.toons.model.EliteSkill;
 import org.example.toons.service.BossService;
@@ -7,7 +8,6 @@ import org.example.toons.service.EliteSkillService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -36,9 +36,9 @@ public class EliteSkillController {
         model.addAttribute("eliteSkill", new EliteSkill());
         return "skill";
     }
-    //valider le formulaire de création:
+    //valider le formulaire de création & de modification en fonction d'un potentiel id recupéré
     @PostMapping("/add-skill")
-    public String submitSkill(@Validated @ModelAttribute("eliteSkill") EliteSkill eliteSkill, BindingResult bindingResult) {
+    public String submitSkill(@Valid @ModelAttribute("eliteSkill") EliteSkill eliteSkill, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             System.out.println("Erreur dans le formulaire de skill");
             return "skill";
@@ -62,13 +62,13 @@ public class EliteSkillController {
     }
     //READ
 
-    //detail
+    //READ-detail
     @GetMapping("/skill-detail/{skillId}")
     public String getEliteSkillById(Model model, @PathVariable("skillId")UUID skillId){
         model.addAttribute("skill", eliteSkillService.getEliteSkillById(skillId));
         return "skill-detail";
     }
-    //list
+    //READ list
     @GetMapping("/skill-list")
     public String getAllSkill(Model model){
         List<EliteSkill> eliteSkills = eliteSkillService.getAllEliteSkills();
@@ -77,29 +77,12 @@ public class EliteSkillController {
     }
 
     //UPDATE
-
         //vers le form d'update
         @GetMapping("/skill-update/{skillId}")
         public String updateSkill(Model model, @PathVariable("skillId") UUID skillId){
             model.addAttribute("eliteSkill", eliteSkillService.getEliteSkillById(skillId));
         return "skill";
         }
-
-        //récuperation et validation du form de modification
-//        @PostMapping("/add-skill")
-//        public String submiteSkillChange(@Validated @ModelAttribute("eliteSkill") EliteSkill eliteSkill, BindingResult bindingResult) {
-//            if (bindingResult.hasErrors()) {
-//                System.out.println("erreur lors de l'update de la compétence");
-//                return "skill";
-//            } else {
-//                eliteSkillService.updateEliteSkillName(
-//                        eliteSkill.getId(),
-//                        eliteSkill.getName(),
-//                        eliteSkill.getDescription()
-//                );
-//                return "redirect:/skill-list";
-//            }
-//        }
 
     //add_boss
     @GetMapping("/skill/{id}/add-boss")

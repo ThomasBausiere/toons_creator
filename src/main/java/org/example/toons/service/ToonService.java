@@ -1,6 +1,7 @@
 package org.example.toons.service;
 
 
+import org.example.toons.dao.ToonRepository;
 import org.example.toons.model.Toon;
 import org.springframework.stereotype.Service;
 
@@ -8,62 +9,26 @@ import java.util.*;
 
 @Service
 public class ToonService {
+    private final ToonRepository toonRepository;
 
-    private  Map<UUID, Toon> toons;
-    public ToonService() {
-        toons = new HashMap<>();
-        Toon toon1= Toon.builder()
-                .id(UUID.randomUUID())
-                .name("Warrior Firwan")
-                .campaign("Prophecie")
-                .profession("Warrior")
-                .level(20)
-                .build();
-        Toon toon2= Toon.builder()
-                .id(UUID.randomUUID())
-                .name("Rysa Wys")
-                .campaign("Faction")
-                .profession("Assassin")
-                .level(20)
-                .build();
-        Toon toon3= Toon.builder()
-                .id(UUID.randomUUID())
-                .name("Demonix Firwan")
-                .campaign("Prophecie")
-                .profession("Necromancer")
-                .level(20)
-                .build();
-        Toon toon4= Toon.builder()
-                .id(UUID.randomUUID())
-                .name("Adrobora Firwan")
-                .campaign("Nightfall")
-                .profession("Paragon")
-                .level(20)
-                .build();
-        Toon toon5= Toon.builder()
-                .id(UUID.randomUUID())
-                .name("Jack Daniel Rt")
-                .campaign("Faction")
-                .profession("Ritualist")
-                .level(20)
-                .build();
 
-        toons.put(toon1.getId(), toon1);
-        toons.put(toon2.getId(), toon2);
-        toons.put(toon3.getId(), toon3);
-        toons.put(toon4.getId(), toon4);
-        toons.put(toon5.getId(), toon5);
 
+
+    public ToonService(ToonRepository toonRepository) {
+
+            this.toonRepository = toonRepository;
+//
+//
     }
 
 
 
     public List<Toon> getAllToon(){
-        return toons.values().stream().toList();
+        return toonRepository.findAll();
     }
 
     public Toon getToonById(UUID id){
-        return this.toons.get(id);
+        return this.toonRepository.findById(id).orElse(null);
     }
 
     public Toon newToon(String campaign, String profession, String name, int level ){
@@ -74,31 +39,25 @@ public class ToonService {
                 .profession(profession)
                 .level(level)
                 .build();
-        return toons.put(newToon.getId(), newToon);
+        return toonRepository.save(newToon);
     }
 
     public Toon updateToon(UUID id, String campaign, String profession, String name, int level){
-        toons.get(id).setName(name);
+        getToonById(id).setName(name);
         getToonById(id).setCampaign(campaign);
         getToonById(id).setLevel(level);
         getToonById(id).setProfession(profession);
 
-        return getToonById(id);
+        return toonRepository.save(getToonById(id));
     }
 
     public boolean deleteToonById(UUID id){
-        toons.remove(id);
+        toonRepository.deleteById(id);
         return true;
     }
 
     public List<Toon> searchToons(String search) {
-        List<Toon> toonList = new ArrayList<>();
-            toons.values().stream().forEach(toon -> {
-                if(toon.getName().contains(search) || toon.getCampaign().contains(search) || toon.getProfession().contains(search)) {
-                    toonList.add(toon);
-                }
-            });
-        return toonList;
+        return toonRepository.searchToonsByKeyword(search);
     }
 
 

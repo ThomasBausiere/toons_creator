@@ -1,5 +1,6 @@
 package org.example.toons.service;
 
+import org.example.toons.dao.EliteSkillRepository;
 import org.example.toons.model.Boss;
 import org.example.toons.model.EliteSkill;
 import org.springframework.stereotype.Service;
@@ -9,19 +10,15 @@ import java.util.*;
 
 @Service
 public class EliteSkillService {
-    private final Map<UUID, EliteSkill> eliteSkills;
+
     private final BossService bossService;
+    private final EliteSkillRepository eliteSkillRepository;
 
 
-    public EliteSkillService(BossService bossService) {
+    public EliteSkillService(BossService bossService, EliteSkillRepository eliteSkillRepository) {
         this.bossService = bossService;
-        this.eliteSkills = new HashMap<>();
-        addEliteSkill("Spiteful Spirit", "Curses foes to take damage when attacking.", null);
-        addEliteSkill("Savage Shot", "Interrupts a foe's action and causes bleeding.", null);
-        addEliteSkill("Elemental Attunement", "Increases energy regeneration and elemental power.", null);
-        addEliteSkill("Shield of Deflection", "Blocks incoming attacks while health is above 50%.", null);
-        addEliteSkill("I Am the Strongest!", "Heals and empowers based on adrenaline.", null);
-        addEliteSkill("Arcane Mimicry", "Copies an elite skill from a target ally.", null);
+        this.eliteSkillRepository = eliteSkillRepository;
+
     }
 
     // CREATE
@@ -32,23 +29,23 @@ public class EliteSkillService {
                 .description(description)
                 .bossList(bossList)
                 .build();
-         eliteSkills.put(newEliteSkill.getId(), newEliteSkill);
+        eliteSkillRepository.save(newEliteSkill);
         return newEliteSkill;
     }
 
     // READ
-    public EliteSkill getEliteSkillById(UUID id) {return this.eliteSkills.get(id); }
+    public EliteSkill getEliteSkillById(UUID id) {return eliteSkillRepository.findById(id).orElse(null); }
 
-    public List<EliteSkill> getAllEliteSkills() {return eliteSkills.values().stream().toList();}
+    public List<EliteSkill> getAllEliteSkills() {return eliteSkillRepository.findAll();}
 
     // UPDATE
     public EliteSkill updateEliteSkillName(UUID id, String name, String description) {
-        eliteSkills.get(id).setName(name);
-        eliteSkills.get(id).setDescription(description);
-        return eliteSkills.get(id);
+        getEliteSkillById(id).setName(name);
+        getEliteSkillById(id).setDescription(description);
+        return eliteSkillRepository.save(getEliteSkillById(id));
     }
     public boolean addBossToEliteSkillList(UUID eliteSkillId, UUID bossId) {
-        EliteSkill eliteSkill = eliteSkills.get(eliteSkillId);
+        EliteSkill eliteSkill = eliteSkillRepository.findById(eliteSkillId).orElse(null);
         Boss boss = bossService.getBossById(bossId);
 
         if (eliteSkill == null || boss == null) return false;
@@ -68,8 +65,10 @@ public class EliteSkillService {
 
         return false;
     }
+
+
     public boolean removeBossToEliteSkillList(UUID eliteSkillId, UUID bossId) {
-        EliteSkill eliteSkill = eliteSkills.get(eliteSkillId);
+        EliteSkill eliteSkill = eliteSkillRepository.findById(eliteSkillId).orElse(null);
         if (eliteSkill == null || eliteSkill.getBossList() == null) return false;
 
         return eliteSkill.getBossList().removeIf(boss -> boss.getId().equals(bossId));
@@ -78,7 +77,7 @@ public class EliteSkillService {
 
     // DELETE
     public boolean deleteEliteSkill(UUID id) {
-        eliteSkills.remove(id);
+        eliteSkillRepository.deleteById(id);
         return true;
     }
 

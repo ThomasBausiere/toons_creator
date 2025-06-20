@@ -16,21 +16,34 @@
              </div>
              <div class="nav-links">
                  <a th:href="@{/}">Home</a>
-                 <a th:href="@{/list}">List</a>
-                 <a th:href="@{/skill-list}">List Skill</a>
-                 <a th:href="@{/create}">create</a>
-                 <a th:href="@{/create-skill}">create skill</a>
+
+                 <div class="dropdown">
+                     <span class="dropdown-toggle">Toon</span>
+                     <div class="dropdown-content">
+                         <a th:href="@{/list}">List</a>
+                         <a th:href="@{/create}">Create</a>
+                     </div>
+                 </div>
+
+                 <div class="dropdown">
+                     <span class="dropdown-toggle">Skill</span>
+                     <div class="dropdown-content">
+                         <a th:href="@{/skill-list}">List Skill</a>
+                         <a th:href="@{/create-skill}">Create Skill</a>
+                     </div>
+                 </div>
              </div>
+
              <div class="nav-actions">
                  <form class="search-form" method="get" th:action="@{/toons}">
                      <input th:name="search" placeholder="Search"/>
-
                  </form>
              </div>
          </div>
-    </nav>
- </th:block>
+     </nav>
 
+ </th:block>
+<br><br>
     <h1>Homepage</h1>
 
 </body>
