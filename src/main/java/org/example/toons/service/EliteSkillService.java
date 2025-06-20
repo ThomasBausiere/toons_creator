@@ -24,7 +24,6 @@ public class EliteSkillService {
     // CREATE
     public EliteSkill addEliteSkill(String name, String description, List<Boss> bossList) {
         EliteSkill newEliteSkill = EliteSkill.builder()
-                .id(UUID.randomUUID())
                 .name(name)
                 .description(description)
                 .bossList(bossList)

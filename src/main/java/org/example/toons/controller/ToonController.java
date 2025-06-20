@@ -43,10 +43,7 @@ public class ToonController {
         return "list";
     }
 
-    //Récupérer par formulaire
-
-
-
+    //Récupérer par formulaire 
 
     //Create
     //Vers formulaire d'ajout:
@@ -83,7 +80,7 @@ public class ToonController {
     }
     //mise à jour du toon
     @PutMapping("/add")
-    public String submiteChange(@Validated @ModelAttribute("toon") Toon toon, BindingResult bindingResult){
+    public String submitChange(@Validated @ModelAttribute("toon") Toon toon, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             System.out.println("erreur lors de l'update");
             return "redirect:/list";

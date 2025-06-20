@@ -33,7 +33,6 @@ public class ToonService {
 
     public Toon newToon(String campaign, String profession, String name, int level ){
         Toon newToon = Toon.builder()
-                .id(UUID.randomUUID())
                 .name(name)
                 .campaign(campaign)
                 .profession(profession)
