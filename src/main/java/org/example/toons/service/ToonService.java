@@ -47,7 +47,7 @@ public class ToonService {
         getToonById(id).setLevel(level);
         getToonById(id).setProfession(profession);
 
-        return toonRepository.save(getToonById(id));
+        return getToonById(id);
     }
 
     public boolean deleteToonById(UUID id){

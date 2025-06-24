@@ -27,6 +27,7 @@ public class BossService {
         addBoss("Balthazar's Cursed", "Perdition Rock (Ring of Fire Islands)");
     }
 
+    // CREATE
     private void addBoss(String name, String pos) {
         UUID id = UUID.randomUUID();
         Boss boss = Boss.builder()
