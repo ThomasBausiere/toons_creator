@@ -8,7 +8,6 @@ class ToonsApplicationTests {
 
     @Test
     void contextLoads() {
-        
     }
 
 }
