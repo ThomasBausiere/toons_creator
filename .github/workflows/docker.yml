@@ -19,6 +19,6 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v4
             - name: build docker image
-              run: docker build -t $env.USERNAME/toon .
+              run: docker build -t $USERNAME/toon .
             - name: push dockerhub
-              run: docker push $env.USERNAME/toon
+              run: docker push $USERNAME/toon
